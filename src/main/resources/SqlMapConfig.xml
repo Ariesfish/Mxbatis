@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!-- Master Configuration -->
+<configuration>
+    <!-- Configure Environments -->
+    <environments default="mysql">
+        <!-- Configure MySQL -->
+        <environment id="mysql">
+            <!-- Configure Transaction Type -->
+            <transactionManager type="JDBC"></transactionManager>
+            <!-- Configure Data Source (Connection Pool) -->
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/spring"/>
+                <property name="username" value="root"/>
+                <property name="password" value="suzhou123"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!-- Specify Mapping Configuration, for every DAO -->
+    <mappers>
+        <mapper resource="xyz/ariesfish/dao/IUserMapper.xml"></mapper>
+    </mappers>
+</configuration>
