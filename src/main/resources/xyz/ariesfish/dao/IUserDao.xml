@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<mapper namespace="xyz.ariesfish.dao.IUserDao">
+    <select id="findAll" resultType="xyz.ariesfish.domain.User">
+        select * from user
+    </select>
+</mapper>

@@ -1,11 +1,11 @@
 package xyz.ariesfish.test;
 
-import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import xyz.ariesfish.dao.IUserDao;
 import xyz.ariesfish.domain.User;
+import xyz.ariesfish.mxbatis.io.Resources;
+import xyz.ariesfish.mxbatis.sqlsession.SqlSession;
+import xyz.ariesfish.mxbatis.sqlsession.SqlSessionFactory;
+import xyz.ariesfish.mxbatis.sqlsession.SqlSessionFactoryBuilder;
 
 import java.io.InputStream;
 import java.util.List;
@@ -15,7 +15,7 @@ public class MxbatisTest {
     public static void main(String[] args) {
         /**
          * 1. read configuration
-         * 2. create SqlSessionFactory
+         * 2. create SqlSessionFactoryBuilder
          * 3. use factory generate SqlSession
          * 4. use SqlSession create proxy of DAO
          * 5. execute proxy
@@ -24,7 +24,7 @@ public class MxbatisTest {
         try {
             // 1. read configuration
             InputStream in = Resources.getResourceAsStream("SqlMapConfig.xml");
-            // 2. create SqlSessionFactory
+            // 2. create SqlSessionFactoryBuilder
             SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
             SqlSessionFactory factory = builder.build(in);
             // 3. use factory generate SqlSession
