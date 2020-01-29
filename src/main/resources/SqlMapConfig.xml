@@ -19,6 +19,7 @@
 
     <!-- Specify Mapping Configuration, for every DAO -->
     <mappers>
-        <mapper resource="xyz/ariesfish/dao/IUserDao.xml"></mapper>
+        <!--<mapper resource="xyz/ariesfish/dao/IUserDao.xml"></mapper>-->
+        <mapper class="xyz.ariesfish.dao.IUserDao"></mapper>
     </mappers>
 </configuration>
