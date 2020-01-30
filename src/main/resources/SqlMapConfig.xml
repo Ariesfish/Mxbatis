@@ -28,6 +28,6 @@
 
     <!-- Specify Mapping Configuration, for every DAO -->
     <mappers>
-        <mapper resource="xyz/ariesfish/dao/IUserMapper.xml"></mapper>
+        <package name="xyz.ariesfish.dao"></package>
     </mappers>
 </configuration>
