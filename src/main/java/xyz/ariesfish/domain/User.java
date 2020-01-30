@@ -2,6 +2,7 @@ package xyz.ariesfish.domain;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 public class User implements Serializable {
 
@@ -10,6 +11,7 @@ public class User implements Serializable {
     private Date userBirthday;
     private String userGender;
     private String userAddress;
+    private List<Account> accounts;
 
     public Integer getUserId() {
         return userId;
@@ -49,6 +51,14 @@ public class User implements Serializable {
 
     public void setUserAddress(String userAddress) {
         this.userAddress = userAddress;
+    }
+
+    public List<Account> getAccounts() {
+        return accounts;
+    }
+
+    public void setAccounts(List<Account> accounts) {
+        this.accounts = accounts;
     }
 
     @Override

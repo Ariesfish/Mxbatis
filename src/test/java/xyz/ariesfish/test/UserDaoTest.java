@@ -41,7 +41,9 @@ public class UserDaoTest {
     public void testFindAll() {
         List<User> users = userDao.findAll();
         for (User user : users) {
+            System.out.println("------ User Info ------");
             System.out.println(user);
+            System.out.println(user.getAccounts());
         }
     }
 

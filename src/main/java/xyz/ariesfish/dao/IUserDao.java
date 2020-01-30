@@ -1,11 +1,12 @@
 package xyz.ariesfish.dao;
 
 import org.apache.ibatis.annotations.*;
-import org.junit.runners.Parameterized;
+import org.apache.ibatis.mapping.FetchType;
 import xyz.ariesfish.domain.User;
 
 import java.util.List;
 
+@CacheNamespace(blocking = true)
 public interface IUserDao {
 
     @Select("select * from user")
@@ -14,7 +15,9 @@ public interface IUserDao {
             @Result(column = "username", property = "userName"),
             @Result(column = "birthday", property = "userBirthday"),
             @Result(column = "sex", property = "userGender"),
-            @Result(column = "address", property = "userAddress")
+            @Result(column = "address", property = "userAddress"),
+            @Result(column = "id", property = "accounts",
+                    many = @Many(select = "xyz.ariesfish.dao.IAccountDao.findByUid", fetchType = FetchType.LAZY))
     })
     List<User> findAll();
 

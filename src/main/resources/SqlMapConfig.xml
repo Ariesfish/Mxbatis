@@ -5,6 +5,9 @@
 <!-- Master Configuration -->
 <configuration>
     <properties resource="jdbcConfig.properties"></properties>
+    <settings>
+        <setting name="cacheEnabled" value="true"/>
+    </settings>
     <typeAliases>
         <package name="xyz.ariesfish.domain"/>
     </typeAliases>

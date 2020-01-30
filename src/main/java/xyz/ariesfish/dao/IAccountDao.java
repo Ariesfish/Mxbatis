@@ -16,7 +16,11 @@ public interface IAccountDao {
             @Result(id = true, column = "id", property = "id"),
             @Result(column = "uid", property = "uid"),
             @Result(column = "money", property = "money"),
-            @Result(column = "uid", property = "user", one=@One(select = "xyz.ariesfish.dao.IUserDao.findById", fetchType = FetchType.EAGER))
+            @Result(column = "uid", property = "user",
+                    one=@One(select = "xyz.ariesfish.dao.IUserDao.findById", fetchType = FetchType.EAGER))
     })
     List<Account> findAll();
+
+    @Select("select * from account where uid = #{userId}")
+    List<Account> findByUid(Integer userId);
 }
