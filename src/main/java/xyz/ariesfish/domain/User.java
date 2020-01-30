@@ -2,6 +2,7 @@ package xyz.ariesfish.domain;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 public class User implements Serializable {
 
@@ -10,6 +11,18 @@ public class User implements Serializable {
     private Date birthday;
     private String sex;
     private String address;
+
+    // 主表实体类应该包含从表实体的集合引用
+    // 一对多映射
+    private List<Account> accounts;
+
+    public List<Account> getAccounts() {
+        return accounts;
+    }
+
+    public void setAccounts(List<Account> accounts) {
+        this.accounts = accounts;
+    }
 
     public Integer getId() {
         return id;
