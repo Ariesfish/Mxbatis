@@ -4,6 +4,10 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <!-- Master Configuration -->
 <configuration>
+    <properties resource="jdbcConfig.properties"></properties>
+    <typeAliases>
+        <package name="xyz.ariesfish.domain"/>
+    </typeAliases>
     <!-- Configure Environments -->
     <environments default="mysql">
         <!-- Configure MySQL -->
@@ -12,16 +16,16 @@
             <transactionManager type="JDBC"></transactionManager>
             <!-- Configure Data Source (Connection Pool) -->
             <dataSource type="POOLED">
-                <property name="driver" value="com.mysql.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://localhost:3306/spring"/>
-                <property name="username" value="root"/>
-                <property name="password" value="suzhou123"/>
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
             </dataSource>
         </environment>
     </environments>
 
     <!-- Specify Mapping Configuration, for every DAO -->
     <mappers>
-        <mapper class="xyz.ariesfish.dao.IUserDao"></mapper>
+        <package name="xyz.ariesfish.dao"></package>
     </mappers>
 </configuration>
