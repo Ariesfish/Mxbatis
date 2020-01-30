@@ -12,7 +12,7 @@ import xyz.ariesfish.domain.QueryVo;
 import xyz.ariesfish.domain.User;
 
 import java.io.InputStream;
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MxbatisTest {
@@ -63,36 +63,6 @@ public class MxbatisTest {
     }
 
     @Test
-    public void testSave() {
-        User user = new User();
-        user.setUsername("Gu Ping");
-        user.setAddress("Suzhou");
-        user.setSex("F");
-        user.setBirthday(new Date());
-
-        System.out.println(user);
-        userDao.saveUser(user);
-        System.out.println(user);
-    }
-
-    @Test
-    public void testUpdate() {
-        User user = new User();
-        user.setId(5);
-        user.setUsername("Wang Qiang");
-        user.setAddress("Hongkong");
-        user.setSex("M");
-        user.setBirthday(new Date());
-
-        userDao.updateUser(user);
-    }
-
-    @Test
-    public void testDelete() {
-        userDao.deleteUser(5);
-    }
-
-    @Test
     public void testFindOne() {
         User user = userDao.findById(4);
         System.out.println(user);
@@ -103,27 +73,47 @@ public class MxbatisTest {
      */
     @Test
     public void testFindByName() {
-        List<User> users = userDao.findByName("%林%");
+        List<User> users = userDao.findByName("%Lin%");
         for (User user : users) {
             System.out.println(user);
         }
     }
 
     @Test
-    public void testFindTotal() {
-        int count = userDao.findTotal();
-        System.out.println(count);
-    }
-
-    @Test
     public void testFindByVo() {
         QueryVo vo = new QueryVo();
         User user = new User();
-        user.setUsername("%林%");
+        user.setUsername("%Lin%");
         vo.setUser(user);
         List<User> users = userDao.findUserByVo(vo);
         for (User u : users) {
             System.out.println(u);
+        }
+    }
+
+    @Test
+    public void testFindByCondition() {
+        User u = new User();
+        //u.setUsername("Lin Feng");
+        u.setSex("M");
+        List<User> users = userDao.findUserByCondition(u);
+        for (User user : users) {
+            System.out.println(user);
+        }
+    }
+
+    @Test
+    public void testFindUserInIds() {
+        QueryVo vo = new QueryVo();
+        List<Integer> idList = new ArrayList<Integer>();
+        idList.add(2);
+        idList.add(4);
+        idList.add(8);
+        vo.setIds(idList);
+
+        List<User> users = userDao.findUserInIds(vo);
+        for (User user : users) {
+            System.out.println(user);
         }
     }
 }

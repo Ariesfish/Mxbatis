@@ -10,17 +10,9 @@ public interface IUserDao {
 
     List<User> findAll();
 
-    void saveUser(User user);
-
-    void updateUser(User user);
-
-    void deleteUser(Integer id);
-
     User findById(Integer id);
 
     List<User> findByName(String username);
-
-    int findTotal();
 
     /**
      * 根据QueryVo中的条件查询用户
@@ -28,4 +20,18 @@ public interface IUserDao {
      * @return
      */
     List<User> findUserByVo(QueryVo vo);
+
+    /**
+     * 根据传入参数条件查询
+     * @param user
+     * @return
+     */
+    List<User> findUserByCondition(User user);
+
+    /**
+     * 根据QueryVo中的ID集合查询
+     * @param vo
+     * @return
+     */
+    List<User> findUserInIds(QueryVo vo);
 }
