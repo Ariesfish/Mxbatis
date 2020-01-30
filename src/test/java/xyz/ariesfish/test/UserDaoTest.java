@@ -21,7 +21,6 @@ public class UserDaoTest {
     private SqlSession session;
     private IUserDao userDao;
 
-
     @Before
     public void init() throws Exception {
         in = Resources.getResourceAsStream("SqlMapConfig.xml");
@@ -49,19 +48,19 @@ public class UserDaoTest {
     @Test
     public void testSaveUser() {
         User user = new User();
-        user.setUsername("Hu Ping");
-        user.setAddress("Hangzhou");
+        user.setUserName("Hu Ping");
+        user.setUserAddress("Hangzhou");
         userDao.saveUser(user);
     }
 
     @Test
     public void testUpdateUser() {
         User user = new User();
-        user.setId(9);
-        user.setUsername("Hu Ping");
-        user.setAddress("Hangzhou");
-        user.setSex("M");
-        user.setBirthday(new Date());
+        user.setUserId(9);
+        user.setUserName("Hu Ping");
+        user.setUserAddress("Hangzhou");
+        user.setUserGender("M");
+        user.setUserBirthday(new Date());
         userDao.updateUser(user);
     }
 

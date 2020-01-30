@@ -1,9 +1,7 @@
 package xyz.ariesfish.dao;
 
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
+import org.junit.runners.Parameterized;
 import xyz.ariesfish.domain.User;
 
 import java.util.List;
@@ -11,6 +9,13 @@ import java.util.List;
 public interface IUserDao {
 
     @Select("select * from user")
+    @Results(id = "userMap", value={
+            @Result(id=true, column = "id", property = "userId"),
+            @Result(column = "username", property = "userName"),
+            @Result(column = "birthday", property = "userBirthday"),
+            @Result(column = "sex", property = "userGender"),
+            @Result(column = "address", property = "userAddress")
+    })
     List<User> findAll();
 
     @Insert("insert into user (username,address,sex,birthday) values(#{username}, #{address}, #{sex}, #{birthday})")
@@ -23,10 +28,12 @@ public interface IUserDao {
     void deleteUser(Integer id);
 
     @Select("select * from user where id=#{id}")
+    @ResultMap(value={"userMap"})
     User findById(Integer id);
 
     @Select("select * from user where username like #{username}")
     //@Select("select * from user where username like '%${value}%'")
+    @ResultMap(value={"userMap"})
     List<User> findUserByName(String username);
 
     @Select("select count(*) from user")
