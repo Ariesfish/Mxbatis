@@ -1,7 +1,6 @@
 package xyz.ariesfish.dao;
 
 import xyz.ariesfish.domain.Account;
-import xyz.ariesfish.domain.AccountUser;
 
 import java.util.List;
 
@@ -12,10 +11,4 @@ public interface IAccountDao {
      * @return
      */
     List<Account> findAll();
-
-    /**
-     * 查询所有账户，同时包含用户名和地址信息
-     * @return
-     */
-    List<AccountUser> findAllAccount();
 }

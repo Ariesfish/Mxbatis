@@ -9,7 +9,6 @@ import org.junit.Before;
 import org.junit.Test;
 import xyz.ariesfish.dao.IAccountDao;
 import xyz.ariesfish.domain.Account;
-import xyz.ariesfish.domain.AccountUser;
 
 import java.io.InputStream;
 import java.util.List;
@@ -46,15 +45,10 @@ public class AccountDaoTest {
     public void testFindAll() {
         List<Account> accounts = accountDao.findAll();
         for (Account account : accounts) {
+            System.out.println("------ Account Info ------");
             System.out.println(account);
-        }
-    }
-
-    @Test
-    public void testFindAllAccount() {
-        List<AccountUser> accountUsers = accountDao.findAllAccount();
-        for (AccountUser au : accountUsers) {
-            System.out.println(au);
+            System.out.println("------ Lazy Load User Info ------");
+            System.out.println(account.getUser());
         }
     }
 }

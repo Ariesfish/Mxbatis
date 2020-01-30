@@ -6,6 +6,12 @@
 <configuration>
     <properties resource="jdbcConfig.properties">
     </properties>
+    <!-- 配置参数 -->
+    <settings>
+        <!-- Open Lazy Loading -->
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <setting name="aggressiveLazyLoading" value="false"/>
+    </settings>
     <typeAliases>
         <!-- typeAlias用于配置别名，type属性指定的是实体类中的全限定类名。alias属性指定别名，当指定了别名后不区分大小写 -->
         <package name="xyz.ariesfish.domain"></package>
