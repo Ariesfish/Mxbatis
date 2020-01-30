@@ -9,15 +9,12 @@
         <result property="address" column="address"></result>
         <result property="sex" column="sex"></result>
         <result property="birthday" column="birthday"></result>
-        <collection property="accounts" ofType="Account">
-            <id property="id" column="aid"></id>
-            <result property="uid" column="uid"></result>
-            <result property="money" column="money"></result>
+        <collection property="accounts" ofType="Account" select="xyz.ariesfish.dao.IAccountDao.findByUid" column="id">
         </collection>
     </resultMap>
 
     <select id="findAll" resultMap="userAccountMap">
-        select u.*, a.id as aid,a.uid,a.money from user u left outer join account a on u.id = a.uid
+        select * from user
     </select>
 
     <select id="findById" parameterType="java.lang.Integer" resultType="User">

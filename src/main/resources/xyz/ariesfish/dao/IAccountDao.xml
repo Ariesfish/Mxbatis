@@ -18,4 +18,8 @@
     <select id="findAll" resultMap="accountUserMap">
         select * from account
     </select>
+
+    <select id="findByUid" resultType="Account">
+        select * from account where uid = #{uid}
+    </select>
 </mapper>

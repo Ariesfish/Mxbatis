@@ -57,6 +57,7 @@ public class UserDaoTest {
         for (User user : users) {
             System.out.println("------ User Info ------");
             System.out.println(user);
+            System.out.println("------ Lazy Load Account Infos ------");
             System.out.println(user.getAccounts());
         }
     }
